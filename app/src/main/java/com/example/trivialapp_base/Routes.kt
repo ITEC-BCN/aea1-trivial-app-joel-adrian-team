@@ -6,3 +6,5 @@ sealed class Routes(val route: String) {
     object game : Routes("game")
     object score : Routes("score")
 }
+
+//DONE
