@@ -9,15 +9,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
+import com.example.trivialapp_base.Routes
 import com.example.trivialapp_base.viewmodel.GameViewModel
 
 @Composable
 fun ResultScreen(navController: NavController, viewModel: GameViewModel) {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.Green)) {
-        Text(text = "Pantalla result", modifier = Modifier.align(Alignment.Center))
+    Box(
+        modifier = Modifier.fillMaxSize().background(Color.Green)) {
+        Text(
+            text = "Pantalla 4",
+            modifier = Modifier
+                .align(Alignment.Center)
+                .clickable() { navController.navigate(Routes.menu.route) })
     }
-
 }
-//In progress
