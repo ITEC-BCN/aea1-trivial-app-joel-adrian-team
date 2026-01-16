@@ -20,6 +20,7 @@ import com.example.trivialapp_base.view.GameScreen
 import com.example.trivialapp_base.view.MenuScreen
 import com.example.trivialapp_base.view.ResultScreen
 import com.example.trivialapp_base.view.SplashScreen
+import com.example.trivialapp_base.viewmodel.GameViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,19 +30,20 @@ class MainActivity : ComponentActivity() {
             TrivialAPP_BaseTheme {
                 // Controlador de navegación
                 val navigationController = rememberNavController()
-
-                // Instanciamos el ViewModel una vez
+                val myViewModel by viewModels<GameViewModel>()
                 NavHost(
                     navController = navigationController,
                     startDestination = Routes.Splash.route
                 )
+                // Instanciamos el ViewModel una vez
+
 
                 // Definición de rutas y navegación
                 {
                     composable(Routes.Splash.route) { SplashScreen(navigationController) }
-                    composable(Routes.menu.route) { MenuScreen(navigationController) }
-                    composable(Routes.game.route) { GameScreen(navigationController) }
-                    composable(Routes.score.route) { ResultScreen(navigationController) }
+                    composable(Routes.menu.route) { MenuScreen(navigationController, myViewModel) }
+                    composable(Routes.game.route) { GameScreen(navigationController, myViewModel) }
+                    composable(Routes.score.route) { ResultScreen(navigationController, myViewModel) }
                 }
 
             }

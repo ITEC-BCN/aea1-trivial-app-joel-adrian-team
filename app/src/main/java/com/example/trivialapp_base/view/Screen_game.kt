@@ -18,7 +18,7 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
     Box(
         modifier = Modifier.fillMaxSize().background(Color.Green)) {
         Text(
-            text = "Pantalla 1",
+            text = "Pantalla 3",
             modifier = Modifier
                 .align(Alignment.Center)
                 .clickable() { navController.navigate(Routes.score.route) })
