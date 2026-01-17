@@ -14,11 +14,11 @@ import com.example.trivialapp_base.Routes
 import com.example.trivialapp_base.viewmodel.GameViewModel
 
 @Composable
-fun ResultScreen(navController: NavController, viewModel: GameViewModel, result: Int) {
+fun ResultScreen(navController: NavController, viewModel: GameViewModel, score: Int) {
     Box(
         modifier = Modifier.fillMaxSize().background(Color.Green)) {
         Text(
-            text = "Pantalla 4",
+            text = "$score",
             modifier = Modifier
                 .align(Alignment.Center)
                 .clickable() { navController.navigate(Routes.menu.route) })

@@ -12,9 +12,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.trivialapp_base.ui.theme.TrivialAPP_BaseTheme
 import com.example.trivialapp_base.view.GameScreen
 import com.example.trivialapp_base.view.MenuScreen
@@ -43,9 +45,18 @@ class MainActivity : ComponentActivity() {
                     composable(Routes.Splash.route) { SplashScreen(navigationController) }
                     composable(Routes.menu.route) { MenuScreen(navigationController, myViewModel) }
                     composable(Routes.game.route) { GameScreen(navigationController, myViewModel) }
-                    composable(Routes.score.route) { ResultScreen(navigationController, myViewModel) }
-                }
+                    composable(
+                        Routes.score.route,
+                        arguments = listOf(navArgument("score") {type = NavType.IntType})
+                    ) { backStackEntry ->
+                        ResultScreen(
+                            navigationController,
+                            myViewModel,
+                            backStackEntry.arguments?.getInt("score") ?: 0,
 
+                        )
+                    }
+                }
             }
         }
     }
