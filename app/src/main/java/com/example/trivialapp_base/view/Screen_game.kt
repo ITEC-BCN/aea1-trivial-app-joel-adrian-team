@@ -15,6 +15,7 @@ import com.example.trivialapp_base.viewmodel.GameViewModel
 
 @Composable
 fun GameScreen(navController: NavController, viewModel: GameViewModel) {
+    var result = 30
     Box(
         modifier = Modifier.fillMaxSize().background(Color.Green)) {
         Text(

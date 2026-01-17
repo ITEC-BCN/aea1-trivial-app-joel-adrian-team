@@ -14,7 +14,7 @@ import com.example.trivialapp_base.Routes
 import com.example.trivialapp_base.viewmodel.GameViewModel
 
 @Composable
-fun ResultScreen(navController: NavController, viewModel: GameViewModel) {
+fun ResultScreen(navController: NavController, viewModel: GameViewModel, result: Int) {
     Box(
         modifier = Modifier.fillMaxSize().background(Color.Green)) {
         Text(
