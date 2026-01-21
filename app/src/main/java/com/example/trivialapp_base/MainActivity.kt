@@ -35,14 +35,13 @@ class MainActivity : ComponentActivity() {
                 val myViewModel by viewModels<GameViewModel>()
                 NavHost(
                     navController = navigationController,
-                    startDestination = Routes.Splash.route
+                    startDestination = Routes.menu.route
                 )
                 // Instanciamos el ViewModel una vez
 
 
                 // Definición de rutas y navegación
                 {
-                    composable(Routes.Splash.route) { SplashScreen(navigationController) }
                     composable(Routes.menu.route) { MenuScreen(navigationController, myViewModel) }
                     composable(Routes.game.route) { GameScreen(navigationController, myViewModel) }
                     composable(
