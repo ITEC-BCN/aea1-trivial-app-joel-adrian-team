@@ -82,7 +82,7 @@ fun ResultScreen(navController: NavController, viewModel: GameViewModel, score: 
         Box(
             modifier = Modifier
                 .background(
-                    color = Color(0xFFB26CFF),
+                    color = Color(0xFFBA00C4),
                     shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
                 )
                 .clickable{navController.navigate(Routes.menu.route)}

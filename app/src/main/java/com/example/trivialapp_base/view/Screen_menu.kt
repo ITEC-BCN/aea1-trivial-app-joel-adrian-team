@@ -1,6 +1,8 @@
 package com.example.trivialapp_base.view
 
+import android.R.attr.enabled
 import android.R.attr.onClick
+import android.R.attr.type
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -15,9 +17,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,6 +43,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.material3.OutlinedTextFieldDefaults
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("RememberReturnType")
 @Composable
 fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
@@ -71,16 +76,23 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
             contentDescription = "Logo",
         )
 
-        Box {
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = { expanded = !expanded }
+        )
+        {
             OutlinedTextField(
                 value = selectedText,
                 onValueChange = {},
                 readOnly = true,
                 enabled = true,
                 modifier = Modifier
-                    .fillMaxWidth(0.6f)
-                    .clickable { expanded = true },
-                label = { Text("Difficulty", color = Color.Black) },
+                    .menuAnchor()
+                    .fillMaxWidth(0.6f),
+                placeholder = { Text("Difficulty", color = Color.Black) },
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                },
                 textStyle = TextStyle(color = Color.Black),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = Color.White,
@@ -94,11 +106,11 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
             DropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false },
-                modifier = Modifier.background(Color(0xFFB26CFF))
+                modifier = Modifier
             ) {
                 difficulties.forEach { difficulty ->
                     DropdownMenuItem(
-                        text = { Text(text = difficulty, color = Color.Cyan) },
+                        text = { Text(text = difficulty) },
                         onClick = {
                             selectedText = difficulty
                             expanded = false
@@ -113,7 +125,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
         Box(
             modifier = Modifier
                 .background(
-                    color = Color(0xFFB26CFF),
+                    color = Color(0xFF8A00FF),
                     shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
                 )
                 .clickable { navController.navigate(Routes.game.route) }
