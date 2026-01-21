@@ -5,8 +5,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,17 +30,11 @@ import com.example.trivialapp_base.viewmodel.GameViewModel
 
 @Composable
 fun GameScreen(navController: NavController, viewModel: GameViewModel) {
-    var round by remember { mutableStateOf(1) }
+    var round by remember { mutableStateOf(1) }//Cambia de valor al clickar respuesta
     val totalRounds = 10 // Número total de rondas
 
     Box(
         modifier = Modifier.fillMaxSize().background(Color.Black)) {
-        Text(
-            text = "Round $round/$totalRounds",
-            modifier = Modifier.align(Alignment.TopCenter),
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold
-        )
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -43,10 +42,38 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
         verticalArrangement = Arrangement.Center
     ){
         Text(
-            text = viewModel.preguntaActual?.pregunta ?: "",
-            fontSize = 22.sp,
-            modifier = Modifier.padding(bottom = 24.dp)
+            text = "Round $round/$totalRounds", color = Color.Magenta,
+            modifier = Modifier.padding(bottom = 70.dp),
+            fontSize = 18.sp,
         )
+        Text(
+            text = viewModel.preguntaActual?.pregunta ?: "Pregunta", color = Color.Magenta,
+            fontSize = 39.sp,
+            modifier = Modifier.padding(bottom = 70.dp)
+        )
+        Row {
+            Button(onClick = {round ++}){
+                Text(text = "Answer 1",
+                    fontSize = 33.sp,)
+            }
+            Spacer(modifier = Modifier.width(12.dp))
+            Button(onClick = {round ++}){
+                Text(text = "Answer 2",
+                    fontSize = 33.sp,)
+            }
+        }
+        Spacer(modifier = Modifier.height(40.dp))
+        Row {
+            Button(onClick = {round ++}){
+                Text(text = "Answer 3",
+                    fontSize = 33.sp,)
+                }
+            Spacer(modifier = Modifier.width(12.dp))
+            Button(onClick = {round ++}){
+                Text(text = "Answer 4",
+                    fontSize = 33.sp,)
+            }
+        }
     }
     }
 }
