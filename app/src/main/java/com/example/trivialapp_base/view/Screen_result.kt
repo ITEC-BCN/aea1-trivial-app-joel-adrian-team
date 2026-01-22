@@ -10,6 +10,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -82,7 +87,7 @@ fun ResultScreen(navController: NavController, viewModel: GameViewModel, score: 
         Box(
             modifier = Modifier
                 .background(
-                    color = Color(0xFFBA00C4),
+                    color = Color(0xFFB26CFF),
                     shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
                 )
                 .clickable{navController.navigate(Routes.menu.route)}
