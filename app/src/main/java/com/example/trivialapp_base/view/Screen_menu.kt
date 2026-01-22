@@ -11,15 +11,21 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,7 +33,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
@@ -41,6 +46,8 @@ import com.example.trivialapp_base.Routes
 import com.example.trivialapp_base.viewmodel.GameViewModel
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.ui.Alignment
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -125,7 +132,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
         Box(
             modifier = Modifier
                 .background(
-                    color = Color(0xFF8A00FF),
+                    color = Color(0xFFB26CFF),
                     shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
                 )
                 .clickable { navController.navigate(Routes.game.route) }
@@ -137,6 +144,22 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 color = Color.White
             )
         }
+
+
+        Scaffold(
+            containerColor = Color.Black,
+            bottomBar = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(80.dp)
+                        .background(Color.White),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(Icons.Default.Email, contentDescription = null)
+                }
+            }
+        ) { }
     }
 }
 
