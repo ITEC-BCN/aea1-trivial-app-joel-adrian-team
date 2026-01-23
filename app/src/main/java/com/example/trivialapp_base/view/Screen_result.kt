@@ -70,7 +70,6 @@ fun ResultScreen(navController: NavController, viewModel: GameViewModel, score: 
             contentDescription = "Logo",
         )
 
-
         Box(
             modifier = Modifier
                 .background(
