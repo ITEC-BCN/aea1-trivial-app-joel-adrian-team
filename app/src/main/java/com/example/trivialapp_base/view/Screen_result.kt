@@ -1,6 +1,7 @@
 package com.example.trivialapp_base.view
 
 import android.R
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -63,8 +65,11 @@ fun ResultScreen(navController: NavController, viewModel: GameViewModel, score: 
                 )
             )
         )
+        Image(
+            painter = painterResource(id = com.example.trivialapp_base.R.drawable.yeeeeytext),
+            contentDescription = "Logo",
+        )
 
-        Spacer(modifier = Modifier.height(120.dp))
 
         Box(
             modifier = Modifier
