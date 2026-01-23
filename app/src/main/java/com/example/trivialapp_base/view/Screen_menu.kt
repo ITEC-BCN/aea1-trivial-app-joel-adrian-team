@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -54,112 +55,99 @@ import androidx.compose.ui.Alignment
 @SuppressLint("RememberReturnType")
 @Composable
 fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
+
     var selectedText by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     val difficulties = listOf("Easy", "Medium", "Hard")
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF000000)),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(Color.Black)
     ) {
-        Text(
-            text = "Main Menu",
-            color = Color(0xFF6FFAFF),
-            fontSize = 48.sp,
-            fontWeight = FontWeight.Bold,
-            style = androidx.compose.ui.text.TextStyle(
-                shadow = Shadow(
-                    color = Color(0xFF00E5FF),
-                    blurRadius = 12f
-                )
-            )
-        )
 
-        Image(
-            painter = painterResource(id = R.drawable.logo),
-            contentDescription = "Logo",
-        )
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-        ExposedDropdownMenuBox(
-            expanded = expanded,
-            onExpandedChange = { expanded = !expanded }
-        )
-        {
-            OutlinedTextField(
-                value = selectedText,
-                onValueChange = {},
-                readOnly = true,
-                enabled = true,
-                modifier = Modifier
-                    .menuAnchor()
-                    .fillMaxWidth(0.6f),
-                placeholder = { Text("Difficulty", color = Color.Black) },
-                trailingIcon = {
-                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-                },
-                textStyle = TextStyle(color = Color.Black),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    focusedBorderColor = Color.Black,
-                    unfocusedBorderColor = Color.Gray,
-                    disabledTextColor = Color.Black
-                )
+            Text(
+                text = "Main Menu",
+                color = Color(0xFF6FFAFF),
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Bold
             )
 
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false },
-                modifier = Modifier
-            ) {
-                difficulties.forEach { difficulty ->
-                    DropdownMenuItem(
-                        text = { Text(text = difficulty) },
-                        onClick = {
-                            selectedText = difficulty
-                            expanded = false
-                        }
+            Image(
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = "Logo",
+            )
+
+            ExposedDropdownMenuBox(
+                expanded = expanded, onExpandedChange = { expanded = !expanded }
+            )
+            {
+                OutlinedTextField(
+                    value = selectedText,
+                    onValueChange = {},
+                    readOnly = true, enabled = true,
+                    modifier = Modifier
+                        .menuAnchor()
+                        .fillMaxWidth(0.6f),
+                    placeholder = { Text("Difficulty", color = Color.Black) },
+                    trailingIcon = {
+
+                        ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                                   },
+                    textStyle = TextStyle(color = Color.Black),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedContainerColor = Color.White,
+                        unfocusedContainerColor = Color.White,
+                        focusedBorderColor = Color.Black,
+                        unfocusedBorderColor = Color.Gray,
+                        disabledTextColor = Color.Black
                     )
+                )
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false },
+                    modifier = Modifier ) {
+                    difficulties.forEach { difficulty ->
+                        DropdownMenuItem( text = { Text(text = difficulty) },
+                            onClick = { selectedText = difficulty
+                                expanded = false
+                            }
+                        )
+                    }
                 }
             }
-        }
 
-        Spacer(modifier = Modifier.height(180.dp))
+            Spacer(modifier = Modifier.height(180.dp))
+
+            Box(
+                modifier = Modifier
+                    .background(
+                        Color(0xFFB26CFF),
+                        androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
+                    )
+                    .clickable { navController.navigate(Routes.game.route) }
+                    .padding(horizontal = 32.dp, vertical = 12.dp)
+            ) {
+                Text("Play", fontSize = 24.sp, color = Color.White)
+            }
+        }
 
         Box(
             modifier = Modifier
-                .background(
-                    color = Color(0xFFB26CFF),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
-                )
-                .clickable { navController.navigate(Routes.game.route) }
-                .padding(horizontal = 32.dp, vertical = 12.dp)
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .height(80.dp)
+                .background(Color.White),
+            contentAlignment = Alignment.Center
         ) {
-            Text(
-                text = "Play",
-                fontSize = 24.sp,
-                color = Color.White
-            )
+            Icon(Icons.Default.Email, contentDescription = null)
         }
-
-
-        Scaffold(
-            containerColor = Color.Black,
-            bottomBar = {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(80.dp)
-                        .background(Color.White),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(Icons.Default.Email, contentDescription = null)
-                }
-            }
-        ) { }
     }
 }
 
