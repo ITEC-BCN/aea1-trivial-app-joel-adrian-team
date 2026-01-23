@@ -78,7 +78,7 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
 
         // BARRA DE PROGRESO (Timer)
         LinearProgressIndicator(
-            progress = { viewModel.tiempoRestante / 100f }, // La sintaxis lambda correcta
+            progress = { viewModel.tiempoRestante / 100f },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(8.dp),

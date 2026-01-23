@@ -108,3 +108,4 @@ class GameViewModel : ViewModel() {
         timer?.cancel()
     }
 }
+//NECESITO PUSHEAR ESTO
