@@ -80,7 +80,6 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
         LinearProgressIndicator(
             progress = { viewModel.tiempoRestante / 100f },
             modifier = Modifier
-                .fillMaxWidth()
                 .height(8.dp),
             color = Color.Magenta,
             trackColor = Color.DarkGray,
