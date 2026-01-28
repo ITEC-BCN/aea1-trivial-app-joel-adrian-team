@@ -69,7 +69,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
+            //Main menu
             Text(
                 text = "Main Menu",
                 color = Color(0xFF6FFAFF),
@@ -77,11 +77,13 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 fontWeight = FontWeight.Bold
             )
 
+            //Logo
             Image(
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Logo",
             )
 
+            //Dropdown menu for difficulty
             ExposedDropdownMenuBox(
                 expanded = expanded, onExpandedChange = { expanded = !expanded }
             )
@@ -123,6 +125,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
 
             Spacer(modifier = Modifier.height(180.dp))
 
+            //Play button
             Box(
                 modifier = Modifier
                     .background(
