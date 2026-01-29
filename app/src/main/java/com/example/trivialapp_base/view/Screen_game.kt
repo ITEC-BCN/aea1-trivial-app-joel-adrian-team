@@ -117,3 +117,4 @@ fun BotonRespuesta(texto: String, viewModel: GameViewModel) {
         )
     }
 }
+//Revisar
