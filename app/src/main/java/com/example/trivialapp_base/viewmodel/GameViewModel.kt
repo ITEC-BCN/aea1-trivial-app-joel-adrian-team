@@ -12,6 +12,7 @@ import com.example.trivialapp_base.model.ProveedorPreguntas
 
 class GameViewModel : ViewModel() {
     private var preguntasPartida: List<Pregunta> = emptyList()
+
     var indicePreguntaActual by mutableIntStateOf(0)
         private set
 
@@ -30,26 +31,56 @@ class GameViewModel : ViewModel() {
     var juegoTerminado by mutableStateOf(false)
         private set
 
-    var dificultadSeleccionada by mutableStateOf("Facil")
+    var dificultadSeleccionada by mutableStateOf("Easy")
         private set
 
     private var timer: CountDownTimer? = null
-    private val TIEMPO_POR_PREGUNTA = 10000L // 10 segons
+    private val TIEMPO_POR_PREGUNTA = 10000L
 
     fun setDificultad(dificultad: String) {
-        dificultadSeleccionada = dificultad // Sense .value!
+        dificultadSeleccionada = dificultad
     }
+
     fun iniciarJuego() {
         indicePreguntaActual = 0
         puntuacion = 0
         juegoTerminado = false
+        tiempoRestante = 100f
+        timer?.cancel() // Cancelamos timer
 
-        preguntasPartida = ProveedorPreguntas.obtenerPreguntas()
+        // Obtenemos  las preguntas
+        val todasLasPreguntas = ProveedorPreguntas.obtenerPreguntas()
             .filterIsInstance<Pregunta>()
-            .filter { it.dificultad == dificultadSeleccionada }
-            .shuffled()
 
-        cargarSiguientePregunta()
+        var preguntasFiltradas = todasLasPreguntas.filter {
+            it.dificultad.equals(dificultadSeleccionada, ignoreCase = true)
+        }
+
+        if (preguntasFiltradas.isEmpty()) {
+            val dificultadEsp = when(dificultadSeleccionada) {
+                "Easy" -> "Facil"
+                "Medium" -> "Medio"
+                "Hard" -> "Dificil"
+                else -> ""
+            }
+            preguntasFiltradas = todasLasPreguntas.filter {
+                it.dificultad.equals(dificultadEsp, ignoreCase = true)
+            }
+        }
+
+        // Esto evita que el juego se cierre inmediatamente gemini carreo porque se cerraba solo.
+        if (preguntasFiltradas.isEmpty()) {
+            println("DEBUG: No se encontraron preguntas para '$dificultadSeleccionada'. Cargando todas.")
+            preguntasFiltradas = todasLasPreguntas
+        }
+
+        preguntasPartida = preguntasFiltradas.shuffled().take(10)
+
+        if (preguntasPartida.isNotEmpty()) {
+            cargarSiguientePregunta()
+        } else {
+            juegoTerminado = true // Si no hay preguntas, el juego termina
+        }
     }
 
 
@@ -92,10 +123,10 @@ class GameViewModel : ViewModel() {
         tiempoRestante = 100f
 
         timer = object : CountDownTimer(TIEMPO_POR_PREGUNTA, 100) {
-
             override fun onTick(millisUntilFinished: Long) {
                 tiempoRestante = (millisUntilFinished.toFloat() / TIEMPO_POR_PREGUNTA * 100f)
             }
+
             override fun onFinish() {
                 tiempoRestante = 0f
                 avanzarRonda()
@@ -108,4 +139,4 @@ class GameViewModel : ViewModel() {
         timer?.cancel()
     }
 }
-//NECESITO PUSHEAR ESTO
+//Revisar
