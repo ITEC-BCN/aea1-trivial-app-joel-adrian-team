@@ -53,6 +53,7 @@ fun ResultScreen(navController: NavController, viewModel: GameViewModel, score: 
             )
         )
         Spacer(modifier = Modifier.height(70.dp))
+        //Score points text which grabs the score from the previous screen
         Text(
             text = "$score Points",
             color = Color(0xFF6FFAFF),
@@ -65,12 +66,13 @@ fun ResultScreen(navController: NavController, viewModel: GameViewModel, score: 
                 )
             )
         )
+        //Yeey image
         Image(
             painter = painterResource(id = com.example.trivialapp_base.R.drawable.yeeeeytext),
-            contentDescription = "Logo",
+            contentDescription = "CheerCry",
         )
 
-
+        //Share button
         Box(
             modifier = Modifier
                 .background(
@@ -89,6 +91,7 @@ fun ResultScreen(navController: NavController, viewModel: GameViewModel, score: 
 
         Spacer(modifier = Modifier.height(50.dp))
 
+        //Main menu button
         Box(
             modifier = Modifier
                 .background(

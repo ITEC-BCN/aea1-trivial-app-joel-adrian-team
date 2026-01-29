@@ -25,7 +25,7 @@ class GameViewModel : ViewModel() {
     var puntuacion by mutableIntStateOf(0)
         private set
 
-    var tiempoRestante by mutableFloatStateOf(100f)
+    var tiempoRestante by mutableStateOf(100f)
         private set
 
     var juegoTerminado by mutableStateOf(false)
@@ -82,6 +82,7 @@ class GameViewModel : ViewModel() {
             juegoTerminado = true // Si no hay preguntas, el juego termina
         }
     }
+
 
     private fun cargarSiguientePregunta() {
         if (indicePreguntaActual >= preguntasPartida.size) {

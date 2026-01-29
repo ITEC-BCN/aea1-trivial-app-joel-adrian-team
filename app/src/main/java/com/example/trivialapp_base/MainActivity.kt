@@ -6,12 +6,20 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AdUnits
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.ThumbUpAlt
 import androidx.compose.material3.Icon
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -57,15 +65,22 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-                    Box(
+                    Row(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
                             .fillMaxWidth()
                             .height(80.dp)
                             .background(Color.White),
-                        contentAlignment = Alignment.Center
+                         horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(Icons.Filled.Email, contentDescription = "Email")
+                        Spacer(modifier = Modifier.width(46.dp))
+                        Icon(Icons.Filled.Phone, contentDescription = "Phone")
+                        Spacer(modifier = Modifier.width(46.dp))
+                        Icon(Icons.Filled.ThumbUpAlt, contentDescription = "ThumbUpAlt")
+                        Spacer(modifier = Modifier.width(46.dp))
+                        Icon(Icons.Filled.Notifications, contentDescription = "Notifications")
                     }
                 }
             }
