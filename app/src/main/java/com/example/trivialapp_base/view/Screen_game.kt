@@ -76,7 +76,7 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
 
         Spacer(modifier = Modifier.height(70.dp))
 
-        // BARRA DE PROGRESO (Timer)
+        // Timer
         LinearProgressIndicator(
             progress = { viewModel.tiempoRestante / 100f },
             modifier = Modifier
@@ -93,3 +93,5 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
 fun BotonRespuesta(texto: String, viewModel: GameViewModel) {
     TODO("Not yet implemented")
 }
+
+//REVISAR
