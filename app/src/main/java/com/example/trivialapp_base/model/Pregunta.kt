@@ -61,9 +61,15 @@ object ProveedorPreguntas {
             Pregunta("¿Juego battle royale más popular?", "Datos", "Facil", "PUBG", "Apex Legends", "Fortnite", "Warzone", "Fortnite"),
             Pregunta("¿Empresa creadora de Pac-Man?", "Industria", "Facil", "SEGA", "Namco", "Atari", "Nintendo", "Namco"),
             Pregunta("¿Año de lanzamiento de Pac-Man?", "Historia", "Dificil", "1978", "1980", "1982", "1985", "1980"),
-            Pregunta("¿Saga de terror con Raccoon City?", "Saga", "Facil", "Silent Hill", "Resident Evil", "Dead Space", "Outlast", "Resident Evil"),
-            Pregunta("¿Nombre del protagonista de God of War?", "Saga", "Facil", "Kratos", "Ares", "Zeus", "Atreus", "Kratos"),
-            Pregunta("¿Cual és el pokemon que se conoce como el guardian del mar?","Pokemon", "Medio", "Kyogre", "Magikarp", "Lapras", "Lugia", "Lugia")
+            Pregunta("¿Saga de terror con Raccoon City?", "Saga", "Dificil", "Silent Hill", "Resident Evil", "Dead Space", "Outlast", "Resident Evil"),
+            Pregunta("¿Nombre del protagonista de God of War?", "Saga", "Dificil", "Kratos", "Ares", "Zeus", "Atreus", "Kratos"),
+            Pregunta("¿Cual és el pokemon que se conoce como el guardian del mar?","Pokemon", "Medio", "Kyogre", "Magikarp", "Lapras", "Lugia", "Lugia"),
+            Pregunta("¿Cómo se llama el protagonista de The Legend of Zelda?","Zelda","Dificil","Zelda","Link","Ganondorf","Epona","Link"),
+            Pregunta("¿En qué juego aparece por primera vez Mario?","Nintendo","Dificil","Super Mario Bros","Donkey Kong","Mario Kart","Yoshi's Island","Donkey Kong"),
+            Pregunta("¿Cuál es el nombre del reino principal en Minecraft?","Minecraft","Dificil","Nether","Overworld","End","Aether","Overworld"),
+            Pregunta("¿Qué empresa desarrolló el juego Dark Souls?","Videojuegos","Difícil","Capcom","FromSoftware","Square Enix","Bandai Namco","FromSoftware"),
+            Pregunta("¿Cómo se llama el villano principal de Final Fantasy VII?","Final Fantasy","Medio","Cloud","Sephiroth","Kefka","Zack","Sephiroth"),
+            Pregunta("¿Qué arma es característica de Doomguy?","Doom","Dificil","Pistola","Escopeta","Rifle láser","Espada","Escopeta"),
         )
     }
 }
