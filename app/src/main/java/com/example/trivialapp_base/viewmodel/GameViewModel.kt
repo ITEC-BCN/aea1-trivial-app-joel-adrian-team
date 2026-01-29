@@ -68,7 +68,7 @@ class GameViewModel : ViewModel() {
             }
         }
 
-        // Esto evita que el juego se cierre inmediatamente gemini carreo porque se cerraba solo.
+        // Esto evita que el juego se cierre inmediatamente.
         if (preguntasFiltradas.isEmpty()) {
             println("DEBUG: No se encontraron preguntas para '$dificultadSeleccionada'. Cargando todas.")
             preguntasFiltradas = todasLasPreguntas
