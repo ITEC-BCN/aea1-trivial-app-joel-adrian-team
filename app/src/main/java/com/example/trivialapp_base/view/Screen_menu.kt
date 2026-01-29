@@ -83,6 +83,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 contentDescription = "Logo",
             )
 
+            Spacer(modifier = Modifier.height(50.dp))
             //Dropdown menu for difficulty
             ExposedDropdownMenuBox(
                 expanded = expanded, onExpandedChange = { expanded = !expanded }
@@ -123,7 +124,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(180.dp))
+            Spacer(modifier = Modifier.height(120.dp))
 
             //Play button
             Box(
