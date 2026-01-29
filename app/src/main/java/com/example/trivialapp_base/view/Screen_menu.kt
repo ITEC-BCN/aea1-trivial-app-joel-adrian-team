@@ -44,8 +44,6 @@ import androidx.navigation.NavController
 import com.example.trivialapp_base.R
 import com.example.trivialapp_base.Routes
 import com.example.trivialapp_base.viewmodel.GameViewModel
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Alignment
 
@@ -64,7 +62,6 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
             .fillMaxSize()
             .background(Color.Black)
     ) {
-
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
@@ -77,36 +74,30 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 fontSize = 48.sp,
                 fontWeight = FontWeight.Bold
             )
-
+            Spacer(modifier = Modifier.height(24.dp))
             // Logo
             Image(
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Logo",
+                modifier = Modifier.padding(vertical = 16.dp)
             )
-            {
-                OutlinedTextField(
-                    value = selectedText,
-                    onValueChange = {},
-                    readOnly = true, enabled = true,
-                    modifier = Modifier
-                        .menuAnchor()
-                        .fillMaxWidth(0.6f),
-                    placeholder = { Text("Difficulty", color = Color.Black) },
-                    trailingIcon = {
+
+            Spacer(modifier = Modifier.height(24.dp))
 
             // Selector de dificultad
             ExposedDropdownMenuBox(
-                expanded = expanded, onExpandedChange = { expanded = !expanded }
-            )
-            {
+                expanded = expanded,
+                onExpandedChange = { expanded = !expanded }
+            ) {
                 OutlinedTextField(
                     value = selectedText,
-                    onValueChange = {},
-                    readOnly = true, enabled = true,
+                    onValueChange = { },
+                    readOnly = true,
+                    enabled = true,
                     modifier = Modifier
                         .menuAnchor()
                         .fillMaxWidth(0.6f),
-                    placeholder = { Text("Difficulty", color = Color.Black) },
+                    placeholder = { Text("Select Difficulty", color = Color.Black) },
                     trailingIcon = {
                         ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
                     },
@@ -115,8 +106,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                         focusedContainerColor = Color.White,
                         unfocusedContainerColor = Color.White,
                         focusedBorderColor = Color.Black,
-                        unfocusedBorderColor = Color.Gray,
-                        disabledTextColor = Color.Black
+                        unfocusedBorderColor = Color.Gray
                     )
                 )
                 DropdownMenu(
@@ -137,7 +127,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(180.dp))
+            Spacer(modifier = Modifier.height(130.dp))
 
             // Botón Play
             Box(
@@ -159,4 +149,3 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
         }
     }
 }
-//Revisar

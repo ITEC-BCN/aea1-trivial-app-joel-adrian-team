@@ -107,7 +107,7 @@ class GameViewModel : ViewModel() {
         timer?.cancel()
 
         if (respuestaUsuario == preguntaActual?.respuestaCorrecta) {
-            puntuacion++
+            puntuacion += 10
         }
 
         avanzarRonda()
@@ -139,4 +139,3 @@ class GameViewModel : ViewModel() {
         timer?.cancel()
     }
 }
-//Revisar
